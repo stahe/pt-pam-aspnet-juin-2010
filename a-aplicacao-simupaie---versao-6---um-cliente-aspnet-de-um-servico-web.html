@@ -1,0 +1,1168 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Criação de uma aplicação web de três camadas com ASP.NET 2.0, C#, Spring.Net e NHibernate">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/pt-pam-aspnet-juin-2010/a-aplicacao-simupaie---versao-6---um-cliente-aspnet-de-um-servico-web.html">
+      
+      
+        <link rel="prev" href="a-aplicacao-simupaie---versao-5---aspnet--servico-web.html">
+      
+      
+        <link rel="next" href="a-aplicacao-simupaie---versao-7---aspnet--multi-vista--multi-pagina.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>10. A aplicação [SimuPaie] – versão 6 – um cliente ASP.NET de um serviço web - Criação de uma aplicação web de três camadas com ASP.NET 2.0, C#, Spring.Net e NHibernate</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Criação de uma aplicação web de três camadas com ASP.NET 2.0, C#, Spring.Net e NHibernate";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10-a-aplicacao-simupaie-versao-6-um-cliente-aspnet-de-um-servico-web" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Criação de uma aplicação web de três camadas com ASP.NET 2.0, C#, Spring.Net e NHibernate" class="md-header__button md-logo" aria-label="Criação de uma aplicação web de três camadas com ASP.NET 2.0, C#, Spring.Net e NHibernate" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Criação de uma aplicação web de três camadas com ASP.NET 2.0, C#, Spring.Net e NHibernate
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10. A aplicação [SimuPaie] – versão 6 – um cliente ASP.NET de um serviço web
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/pt-pam-aspnet-juin-2010" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Criação de uma aplicação web de três camadas com ASP.NET 2.0, C#, Spring.Net e NHibernate" class="md-nav__button md-logo" aria-label="Criação de uma aplicação web de três camadas com ASP.NET 2.0, C#, Spring.Net e NHibernate" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Criação de uma aplicação web de três camadas com ASP.NET 2.0, C#, Spring.Net e NHibernate
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/pt-pam-aspnet-juin-2010" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bem-vindos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introducao.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introdução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="uma-breve-introducao-ao-aspnet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Uma breve introdução ao ASP.NET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o-estudo-de-caso.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. O Estudo de Caso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-aplicacao-simupaie---versao-1---aspnet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. A aplicação [SimuPaie] – versão 1 – ASP.NET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-aplicacao-simupaie---versao-2---ajax--aspnet-.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. A aplicação [SimuPaie] – versão 2 – AJAX / ASP.NET 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introducao-ao-orm-nhibernate.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Introdução ao ORM NHibernate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-aplicacao-simupaie---versao-3---arquitetura-de-3-camadas-com-nhibernate.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. A aplicação [SimuPaie] – versão 3 – arquitetura de 3 camadas com NHibernate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-aplicacao-simupaie---versao-4---aspnet--multi-view--pagina-unica.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. A aplicação [SimuPaie] – versão 4 – ASP.NET / multi-view / página única
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-aplicacao-simupaie---versao-5---aspnet--servico-web.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. A aplicação [SimuPaie] – versão 5 – ASP.NET / serviço web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. A aplicação [SimuPaie] – versão 6 – um cliente ASP.NET de um serviço web
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="a-aplicacao-simupaie---versao-6---um-cliente-aspnet-de-um-servico-web.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. A aplicação [SimuPaie] – versão 6 – um cliente ASP.NET de um serviço web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#101-a-arquitetura-da-aplicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1. A arquitetura da aplicação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-o-projeto-do-visual-web-developer-para-o-cliente-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2. O projeto do Visual Web Developer para o cliente [web]
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-aplicacao-simupaie---versao-7---aspnet--multi-vista--multi-pagina.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. A aplicação [SimuPaie] – versão 7 – ASP.NET / multi-vista / multi-página
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-aplicacao-simupaie---versao-8---um-cliente-aspnet-de-um-servico-web.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. A aplicação [SimuPaie] – versão 8 – um cliente ASP.NET de um serviço web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-aplicacao-simupaie---versao-9---integracao-springnhibernate.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. A aplicação [SimuPaie] – versão 9 – integração Spring/NHibernate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-aplicacao-simupaie---versao-10---um-cliente-flex-para-um-servico-web-aspnet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. A aplicação [SimuPaie] – versão 10 – um cliente Flex para um serviço web ASP.NET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="10-a-aplicacao-simupaie-versao-6-um-cliente-aspnet-de-um-servico-web">10. <span style="color: #365f91"><strong><span style="color: #365f91">A aplicação [SimuPaie] – versão 6 – um cliente ASP.NET de um serviço web</span></strong></span></h1>
+<h2 id="101-a-arquitetura-da-aplicacao">10.1. <span style="color: #4f81bd">A arquitetura da aplicação</span></h2>
+<p>Estamos a desenvolver a arquitetura cliente/servidor do teste NUnit da seguinte forma:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000663000001553C5F7741.png" width="680" height="142" style="display:inline-block; margin:4px;width:17.997cm;height:3.754cm;" class="odt-zoomable" data-zoom-src="images/1000000000000663000001553C5F7741.png" /></td></tr></table>
+
+<p>Em [1], o teste NUnit é substituído pela aplicação web da versão 8. É importante notar aqui que esta arquitetura inclui dois servidores web não mostrados:</p>
+<ul>
+  <li>um servidor web que executa o serviço web [S]. Este será executado numa primeira instância do Visual Web Developer.
+  </li>
+  <li>um servidor web que executa o cliente web [1].  Este será executado numa segunda instância do Visual Web Developer.
+  </li>
+</ul>
+<h2 id="102-o-projeto-do-visual-web-developer-para-o-cliente-web">10.2. <span style="color: #4f81bd">O projeto do Visual Web Developer para o cliente [web]</span></h2>
+<p>Criamos um novo projeto Web ASP.NET:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000051E000002A6E3243EF5.png" width="655" height="339" style="display:inline-block; margin:4px;width:17.33cm;height:8.969cm;" class="odt-zoomable" data-zoom-src="images/100000000000051E000002A6E3243EF5.png" /></td></tr></table>
+
+<ul>
+  <li>em [1], selecionamos um projeto Web em C#
+  </li>
+  <li>Em [2], selecionamos «Aplicação Web ASP.NET»
+  </li>
+  <li>em [3], nomeamos o projeto web
+  </li>
+  <li>em [4], especificamos um local para este projeto
+  </li>
+  <li>em [5], o projeto é criado
+  </li>
+</ul>
+
+<p>Modificamos algumas propriedades do projeto:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000424000000ED6350D41A.png" width="530" height="118" style="display:inline-block; margin:4px;width:14.023cm;height:3.134cm;" class="odt-zoomable" data-zoom-src="images/1000000000000424000000ED6350D41A.png" /></td></tr></table>
+
+<ul>
+  <li>em [1], o nome do assembly que será gerado
+  </li>
+  <li>Em [2], o namespace padrão para as classes e interfaces que serão criadas
+  </li>
+</ul>
+
+<p>Para compilar o projeto [pam-v6-client-webservice], podemos recuperar os ficheiros [Global.asax] e [Default.aspx] do projeto web [pam-v4-3tier-nhibernate-multivues-monopage] e copiá-los para o projeto [pam-v6-client-webservice]. Fazemos isto utilizando primeiro o Explorador do Windows:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000005BB00000276158EF771.png" width="680" height="292" style="display:inline-block; margin:4px;width:17.997cm;height:7.729cm;" class="odt-zoomable" data-zoom-src="images/10000000000005BB00000276158EF771.png" /></td></tr></table>
+
+<ul>
+  <li>em [1], a pasta do projeto [pam-v4-3tier-nhibernate-multivues-monopage]
+  </li>
+  <li>em [2], a pasta do projeto [pam-v6-client-webservice] após a cópia 
+    <ul>
+      <li>as pastas [images, pam, resources]
+      </li>
+      <li>os ficheiros [Global.asax, Global.asax.cs]
+      </li>
+      <li>os ficheiros [Default.aspx, Default.aspx.cs, Default.aspx.designer.cs]
+      </li>
+    </ul>
+  </li>
+  <li>em [3], no Visual Studio Express, exiba todos os ficheiros do projeto para mostrar os ficheiros recém-adicionados
+  </li>
+  <li>Em [4], inclua as pastas e os ficheiros adicionados no projeto
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000049A0000022A058C3975.png" width="589" height="277" style="display:inline-block; margin:4px;width:15.584cm;height:7.329cm;" class="odt-zoomable" data-zoom-src="images/100000000000049A0000022A058C3975.png" /></td></tr></table>
+
+<ul>
+  <li>em [5], o novo projeto [pam-v6-client-webservice]
+  </li>
+</ul>
+
+<p>Nesta altura, pode compilar o projeto pela primeira vez [6]. Irá obter os seguintes erros:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">Erreur</span><span class="w">    </span><span class="mi">1</span><span class="w">    </span><span class="n">Le</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Dao</span><span class="err">&#39;</span><span class="w"> </span><span class="n">n</span><span class="err">&#39;</span><span class="n">existe</span><span class="w"> </span><span class="n">pas</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">l</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Pam</span><span class="err">&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">une</span><span class="w"> </span><span class="n">référence</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">assembly</span><span class="w"> </span><span class="n">est</span><span class="o">-</span><span class="n">elle</span><span class="w"> </span><span class="n">manquante</span><span class="w"> </span><span class="o">?</span><span class="p">)</span><span class="w">    </span><span class="n">C</span><span class="p">:</span><span class="err">\</span><span class="n">temp</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">aspnet</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span><span class="err">\</span><span class="n">Global</span><span class="p">.</span><span class="n">asax</span><span class="p">.</span><span class="n">cs</span><span class="w">    </span><span class="mi">3</span><span class="w">    </span><span class="mi">11</span><span class="w">    </span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">Erreur</span><span class="w">    </span><span class="mi">2</span><span class="w">    </span><span class="n">Le</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Metier</span><span class="err">&#39;</span><span class="w"> </span><span class="n">n</span><span class="err">&#39;</span><span class="n">existe</span><span class="w"> </span><span class="n">pas</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">l</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Pam</span><span class="err">&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">une</span><span class="w"> </span><span class="n">référence</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">assembly</span><span class="w"> </span><span class="n">est</span><span class="o">-</span><span class="n">elle</span><span class="w"> </span><span class="n">manquante</span><span class="w"> </span><span class="o">?</span><span class="p">)</span><span class="w">    </span><span class="n">C</span><span class="p">:</span><span class="err">\</span><span class="n">temp</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">aspnet</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span><span class="err">\</span><span class="n">Global</span><span class="p">.</span><span class="n">asax</span><span class="p">.</span><span class="n">cs</span><span class="w">    </span><span class="mi">4</span><span class="w">    </span><span class="mi">11</span><span class="w">    </span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">Erreur</span><span class="w">    </span><span class="mi">3</span><span class="w">    </span><span class="n">Le</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Dao</span><span class="err">&#39;</span><span class="w"> </span><span class="n">n</span><span class="err">&#39;</span><span class="n">existe</span><span class="w"> </span><span class="n">pas</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">l</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Pam</span><span class="err">&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">une</span><span class="w"> </span><span class="n">référence</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">assembly</span><span class="w"> </span><span class="n">est</span><span class="o">-</span><span class="n">elle</span><span class="w"> </span><span class="n">manquante</span><span class="w"> </span><span class="o">?</span><span class="p">)</span><span class="w">    </span><span class="n">c</span><span class="p">:</span><span class="err">\</span><span class="n">temp</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">aspnet</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span><span class="err">\</span><span class="k">default</span><span class="p">.</span><span class="n">aspx</span><span class="p">.</span><span class="n">cs</span><span class="w">    </span><span class="mi">5</span><span class="w">    </span><span class="mi">11</span><span class="w">    </span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">Erreur</span><span class="w">    </span><span class="mi">4</span><span class="w">    </span><span class="n">Le</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Spring</span><span class="err">&#39;</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">introuvable</span><span class="w"> </span><span class="p">(</span><span class="n">une</span><span class="w"> </span><span class="n">directive</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="nn">ou</span><span class="w"> </span><span class="n">une</span><span class="w"> </span><span class="n">référence</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">assembly</span><span class="w"> </span><span class="n">est</span><span class="o">-</span><span class="n">elle</span><span class="w"> </span><span class="n">manquante</span><span class="w"> </span><span class="o">?</span><span class="p">)</span><span class="w">    </span><span class="n">C</span><span class="p">:</span><span class="err">\</span><span class="n">temp</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">aspnet</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span><span class="err">\</span><span class="n">Global</span><span class="p">.</span><span class="n">asax</span><span class="p">.</span><span class="n">cs</span><span class="w">    </span><span class="mi">6</span><span class="w">    </span><span class="mi">7</span><span class="w">    </span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">Erreur</span><span class="w">    </span><span class="mi">5</span><span class="w">    </span><span class="n">Le</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Metier</span><span class="err">&#39;</span><span class="w"> </span><span class="n">n</span><span class="err">&#39;</span><span class="n">existe</span><span class="w"> </span><span class="n">pas</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">l</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Pam</span><span class="err">&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">une</span><span class="w"> </span><span class="n">référence</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">assembly</span><span class="w"> </span><span class="n">est</span><span class="o">-</span><span class="n">elle</span><span class="w"> </span><span class="n">manquante</span><span class="w"> </span><span class="o">?</span><span class="p">)</span><span class="w">    </span><span class="n">c</span><span class="p">:</span><span class="err">\</span><span class="n">temp</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">aspnet</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span><span class="err">\</span><span class="k">default</span><span class="p">.</span><span class="n">aspx</span><span class="p">.</span><span class="n">cs</span><span class="w">    </span><span class="mi">6</span><span class="w">    </span><span class="mi">11</span><span class="w">    </span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="n">Erreur</span><span class="w">    </span><span class="mi">6</span><span class="w">    </span><span class="n">Le</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Employe</span><span class="err">&#39;</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">introuvable</span><span class="w"> </span><span class="p">(</span><span class="n">une</span><span class="w"> </span><span class="n">directive</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="nn">ou</span><span class="w"> </span><span class="n">une</span><span class="w"> </span><span class="n">référence</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">assembly</span><span class="w"> </span><span class="n">est</span><span class="o">-</span><span class="n">elle</span><span class="w"> </span><span class="n">manquante</span><span class="w"> </span><span class="o">?</span><span class="p">)</span><span class="w">    </span><span class="n">C</span><span class="p">:</span><span class="err">\</span><span class="n">temp</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">aspnet</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span><span class="err">\</span><span class="n">Global</span><span class="p">.</span><span class="n">asax</span><span class="p">.</span><span class="n">cs</span><span class="w">    </span><span class="mi">13</span><span class="w">    </span><span class="mi">19</span><span class="w">    </span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="n">Erreur</span><span class="w">    </span><span class="mi">7</span><span class="w">    </span><span class="n">Le</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">espace</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">noms</span><span class="w"> </span><span class="err">&#39;</span><span class="n">IPamMetier</span><span class="err">&#39;</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">introuvable</span><span class="w"> </span><span class="p">(</span><span class="n">une</span><span class="w"> </span><span class="n">directive</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="nn">ou</span><span class="w"> </span><span class="n">une</span><span class="w"> </span><span class="n">référence</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">assembly</span><span class="w"> </span><span class="n">est</span><span class="o">-</span><span class="n">elle</span><span class="w"> </span><span class="n">manquante</span><span class="w"> </span><span class="o">?</span><span class="p">)</span><span class="w">    </span><span class="n">C</span><span class="p">:</span><span class="err">\</span><span class="n">temp</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">aspnet</span><span class="err">\</span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span><span class="err">\</span><span class="n">Global</span><span class="p">.</span><span class="n">asax</span><span class="p">.</span><span class="n">cs</span><span class="w">    </span><span class="mi">14</span><span class="w">    </span><span class="mi">19</span><span class="w">    </span><span class="n">pam</span><span class="o">-</span><span class="n">v6</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">webservice</span>
+</code></pre></div></td></tr></table></div>
+<p>Para compreender e corrigir estes erros, precisamos de analisar a arquitetura do projeto web em desenvolvimento:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000066000000166396BCE53.png" width="680" height="149" style="display:inline-block; margin:4px;width:17.997cm;height:3.948cm;" class="odt-zoomable" data-zoom-src="images/100000000000066000000166396BCE53.png" /></td></tr></table>
+
+<p>O projeto [pam-v6-client-webservice] é a camada [web] [1] no diagrama acima. Podemos ver que esta camada comunica com o cliente do serviço web [C], um cliente que iremos gerar em breve.</p>
+<ul>
+  <li>Os erros 2, 5 e 7 resultam do facto de o código em [pam-v4] fazer referência à DLL da camada [business], uma DLL que agora se encontra no lado do servidor em vez de no lado do cliente.
+  </li>
+  <li>Os erros 1 e 3 têm a mesma causa, mas desta vez em relação à DLL da camada [DAO].
+  </li>
+  <li>O erro 4 é causado pelo facto de o código em [Global.asax] utilizar o Spring, e o nosso projeto não fazer referência à DLL do Spring. Iremos adicionar esta referência.
+  </li>
+  <li>O erro 6 é causado pelo facto de a classe [Employee] estar definida na camada [DAO], que não existe no lado do cliente.
+  </li>
+</ul>
+
+<p>Os erros de namespace 1, 2, 4, 5, 6 e 7 serão resolvidos através da geração do cliente C para o serviço web. O erro 3 é resolvido adicionando uma referência à DLL do Spring no projeto. Podemos proceder da seguinte forma:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000032D00000115048027FC.png" width="407" height="139" style="display:inline-block; margin:4px;width:10.756cm;height:3.665cm;" class="odt-zoomable" data-zoom-src="images/100000000000032D00000115048027FC.png" /></td></tr></table>
+
+<ul>
+  <li>Em [1], adicione uma referência ao projeto [pam-v6-client-webservice]
+  </li>
+  <li>Em [4], adicionámos uma referência à DLL [Spring.Core] na pasta [lib].
+  </li>
+</ul>
+
+<p>Após adicionar esta referência ao Spring, a geração do projeto apresenta menos um erro. Todos os outros erros devem-se a linhas de código que fazem referência a objetos das camadas [business] e [DAO], que agora se encontram no servidor. Veremos que estes objetos em falta serão gerados no cliente do serviço web [C].</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000654000001A178033E28.png" width="680" height="175" style="display:inline-block; margin:4px;width:17.997cm;height:4.634cm;" class="odt-zoomable" data-zoom-src="images/1000000000000654000001A178033E28.png" /></td></tr></table>
+
+<p>Antes de gerar o cliente do serviço web [C], iremos alterar o namespace das várias classes presentes. Atualmente, elas encontram-se no namespace [pam-v4]. Alteramos este namespace para [pam-v6]. Os ficheiros envolvidos são os seguintes: <em>Default.aspx.cs, Default.aspx.designer.cs, Global.asax.cs</em>. Por exemplo:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content">....</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">namespace</span> pam_v6</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">{</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#0000ff">public</span> <span style="color:#0000ff">class</span> <span style="color:#2b91af">Global</span> : System.Web.<span style="color:#2b91af">HttpApplication</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    // --- static application data ---</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">public</span> <span style="color:#0000ff">static</span> Employe[] Employes;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">public</span> <span style="color:#0000ff">static</span> IPamMetier PamMetier = <span style="color:#0000ff">null</span>;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">....</span></span>
+</code></pre></div>
+
+<p>Linha 2: O namespace <em>pam_v4</em> foi substituído pelo namespace <em>pam_v6</em>.</p>
+<p>Além disso, deve modificar a marcação nos seguintes ficheiros: <em>Default.aspx</em> e <em>Global.asax</em>:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000000E900000096D5A2DEAB.png" width="163" height="105" style="display:inline-block; margin:4px;width:4.309cm;height:2.775cm;" class="odt-zoomable" data-zoom-src="images/10000000000000E900000096D5A2DEAB.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
+
+<p>A marcação para [Default.aspx] passa a ser:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;%<span style="color:#0000ff">@</span> <span style="color:#a31515">Page</span> <span style="color:#ff0000">Language</span><span style="color:#0000ff">=&quot;C#&quot;</span> <span style="color:#ff0000">AutoEventWireup</span><span style="color:#0000ff">=&quot;true&quot;</span> <span style="color:#ff0000">CodeFile</span><span style="color:#0000ff">=&quot;Default.aspx.cs&quot;</span> <span style="color:#ff0000">Inherits</span><span style="color:#0000ff">=&quot;pam_v6.PagePam&quot;</span> %&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">&lt;!</span><span style="color:#a31515">DOCTYPE</span> <span style="color:#ff0000">html</span> <span style="color:#ff0000">PUBLIC</span> <span style="color:#0000ff">&quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span> <span style="color:#0000ff">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">.....</span></span>
+</code></pre></div>
+
+<p>Linha 1: O atributo <em>Inherits</em> especifica o nome da classe do ficheiro [Default.aspx.cs]. Alteramos o namespace.</p>
+<p>A marcação para [Global.asax] passa a ser:</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;%<span style="color:#0000ff">@</span> <span style="color:#a31515">Application</span> <span style="color:#ff0000">Codebehind</span><span style="color:#0000ff">=&quot;Global.asax.cs&quot;</span> <span style="color:#ff0000">Inherits</span><span style="color:#0000ff">=&quot;pam_v6.Global&quot;</span> <span style="color:#ff0000">Language</span><span style="color:#0000ff">=&quot;C#&quot;</span> %&gt;</span></span>
+</code></pre></div>
+
+<p>Acima, alteramos o namespace do atributo <em>Inherits</em>.</p>
+<p>Agora geramos o cliente do serviço web [C].</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000006480000017D5452C412.png" width="680" height="161" style="display:inline-block; margin:4px;width:17.997cm;height:4.263cm;" class="odt-zoomable" data-zoom-src="images/10000000000006480000017D5452C412.png" /></td></tr></table>
+
+<p>Para executar os passos seguintes, o serviço web [S] [pam-v5-webservice] deve estar a ser executado noutra instância do Visual Web Developer.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000059A00000239907CCC6B.png" width="680" height="270" style="display:inline-block; margin:4px;width:17.997cm;height:7.14cm;" class="odt-zoomable" data-zoom-src="images/100000000000059A00000239907CCC6B.png" /></td></tr></table>
+
+<ul>
+  <li>Em [1], adicionamos uma referência ao serviço web [pam-v5-webservice] ao projeto [pam-v6-client-webservice]
+  </li>
+  <li>Em [2], introduza o URI do serviço web [pam-v5-webservice]. Esta é a URL do ficheiro WSDL para este serviço web. Ao criar o serviço web [pam-v5-webservice], indicámos como encontrar esta URL.
+  </li>
+  <li>Em [3], solicite ao assistente que utilize o ficheiro WSDL especificado em [2]
+  </li>
+  <li>em [4], o serviço web descoberto [Service1Soap] e em [5] os métodos remotos que este expõe.
+  </li>
+  <li>Em [6], definimos o namespace no qual as classes e interfaces do cliente [C] serão geradas
+  </li>
+  <li>Começamos a gerar o cliente [C]
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000006ED000002DD39F13846.png" width="680" height="281" style="display:inline-block; margin:4px;width:17.997cm;height:7.44cm;" class="odt-zoomable" data-zoom-src="images/10000000000006ED000002DD39F13846.png" /></td></tr></table>
+
+<ul>
+  <li>Em [1], o cliente gerado. Clique duas vezes nele para aceder ao seu conteúdo.
+  </li>
+  <li>Em [2], no Object Explorer, são apresentadas as classes e interfaces do namespace<i> pam_v6.WsPam</i>. Este é o namespace do cliente gerado.
+  </li>
+  <li>[3] mostra a classe que implementa o cliente do serviço web.
+  </li>
+  <li>Em [4], os métodos implementados pelo cliente [Service1SoapClient]. Aqui encontramos os dois métodos do serviço web remoto [5] e [6].
+  </li>
+  <li>Em [2], são apresentados os diagramas de entidades para as camadas:
+    <ul>
+      <li>[negócio] : <i>Folha de Pagamento</i>, <i>Itens da Folha de Pagamento</i>
+      </li>
+      <li>[DAO]: <i>Colaborador</i>, <i>Contribuições</i>, <i>Subsídios</i>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>De agora em diante, tenha em mente que estas representações das entidades remotas estão localizadas no lado do cliente e no namespace <em>pam_v6.WsPam</em>.</p>
+<p>Vamos examinar os métodos e propriedades expostos por uma delas:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000003210000027D9F6F81BC.png" width="401" height="319" style="display:inline-block; margin:4px;width:10.597cm;height:8.428cm;" class="odt-zoomable" data-zoom-src="images/10000000000003210000027D9F6F81BC.png" /></td></tr></table>
+
+<ul>
+  <li>Em [1], selecionamos a classe local [Employee]
+  </li>
+  <li>Em [2], vemos as propriedades da entidade remota [Employee], bem como os campos privados utilizados para as necessidades específicas da entidade local. 
+  </li>
+</ul>
+
+<p>Vamos examinar o código em [Global.asax.cs] que contém erros:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001CE00000147FEB8AEAD.png" width="324" height="229" style="display:inline-block; margin:4px;width:8.56cm;height:6.059cm;" class="odt-zoomable" data-zoom-src="images/10000000000001CE00000147FEB8AEAD.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
+
+<ul>
+  <li>As linhas 3 e 4 utilizam namespaces que existem no servidor, mas não no cliente.
+  </li>
+  <li>A linha 13 utiliza uma classe [Employee] para a qual o namespace correto não foi declarado
+  </li>
+  <li>A linha 14 utiliza uma interface <i>IPamMetier </i>que é desconhecida para o cliente.
+  </li>
+</ul>
+
+<p>Já nos deparámos com problemas semelhantes no cliente C# discutido anteriormente.</p>
+<p>Na arquitetura:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000065A0000016D06F4B26E.png" width="680" height="153" style="display:inline-block; margin:4px;width:17.997cm;height:4.039cm;" class="odt-zoomable" data-zoom-src="images/100000000000065A0000016D06F4B26E.png" /></td></tr></table>
+
+<ul>
+  <li>a camada [de negócio] local é implementada pelo cliente [C] do tipo <i>pam_v6</i>.<i>WsPam.Service1SoapClient, </i>que não implementa a interface <i>IPamMetier</i>, apesar de possuir métodos com os mesmos nomes.
+  </li>
+  <li>As entidades tratadas (<i>Employee</i>, <i>Benefits</i>, <i>Contributions</i>) pelo cliente [C] gerado encontram-se no namespace<i> pam_v6.WsPam</i> 
+  </li>
+</ul>
+
+<p>O código em [Global.asax.cs] altera-se da seguinte forma:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span> System;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span> System.Collections.Generic;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span> Pam.Web;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span> Spring.Context.Support;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span> pam_v6.WsPam;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">namespace</span> pam_v6</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">{</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#0000ff">public</span> <span style="color:#0000ff">class</span> <span style="color:#2b91af">Global</span> : System.Web.<span style="color:#2b91af">HttpApplication</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    // --- static application data ---</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">public</span> <span style="color:#0000ff">static</span> <span style="color:#2b91af">Employe</span>[] Employes;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">public</span> <span style="color:#0000ff">static</span> <span style="color:#2b91af">Service1SoapClient</span> PamMetier = <span style="color:#0000ff">null</span>;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">public</span> <span style="color:#0000ff">static</span> <span style="color:#0000ff">string</span> Msg;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">public</span> <span style="color:#0000ff">static</span> <span style="color:#0000ff">bool</span> Erreur = <span style="color:#0000ff">false</span>;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    // application startup</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">public</span> <span style="color:#0000ff">void</span> Application_Start(<span style="color:#0000ff">object</span> sender, <span style="color:#2b91af">EventArgs</span> e)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      // using the configuration file</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      <span style="color:#0000ff">try</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        // instantiation layer [metier]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        PamMetier = <span style="color:#2b91af">ContextRegistry</span>.GetContext().GetObject(<span style="color:#a31515">&quot;pammetier&quot;</span>) <span style="color:#0000ff">as</span> <span style="color:#2b91af">Service1SoapClient</span>;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        // simplified list of employees</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        Employes = PamMetier.GetAllIdentitesEmployes();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        // we succeeded</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        Msg = <span style="color:#a31515">&quot;Base chargée...&quot;</span>;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      <span style="color:#0000ff">catch</span> (<span style="color:#2b91af">Exception</span> ex)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        // we note the error</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        Msg = <span style="color:#0000ff">string</span>.Format(<span style="color:#a31515">&quot;L&#x27;erreur suivante s&#x27;est produite lors de l&#x27;accès à la base de données : {0}&quot;</span>, ex);</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        Erreur = <span style="color:#0000ff">true</span>;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">public</span> <span style="color:#0000ff">void</span> Session_Start(<span style="color:#0000ff">object</span> sender, <span style="color:#2b91af">EventArgs</span> e)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      // put an empty simulation list in the session </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      <span style="color:#2b91af">List</span>&lt;<span style="color:#2b91af">Simulation</span>&gt; simulations = <span style="color:#0000ff">new</span> <span style="color:#2b91af">List</span>&lt;<span style="color:#2b91af">Simulation</span>&gt;();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      Session[<span style="color:#a31515">&quot;simulations&quot;</span>] = simulations;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p>A linha 24 instancia a camada [C] utilizando o Spring. A configuração necessária para esta instanciação está definida em [web.config]:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">&lt;</span><span style="color:#a31515">configSections</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;</span><span style="color:#a31515">sectionGroup</span><span style="color:#0000ff"> </span><span style="color:#ff0000">name</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">system.web.extensions</span>&quot;<span style="color:#0000ff"> </span><span style="color:#ff0000">type</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">System.Web.Configuration.SystemWebExtensionsSectionGroup, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35</span>&quot;<span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> ...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;/</span><span style="color:#a31515">sectionGroup</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;</span><span style="color:#a31515">sectionGroup</span><span style="color:#0000ff"> </span><span style="color:#ff0000">name</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">spring</span>&quot;<span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">        &lt;</span><span style="color:#a31515">section</span><span style="color:#0000ff"> </span><span style="color:#ff0000">name</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">context</span>&quot;<span style="color:#0000ff"> </span><span style="color:#ff0000">type</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">Spring.Context.Support.ContextHandler, Spring.Core</span>&quot;<span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">        &lt;</span><span style="color:#a31515">section</span><span style="color:#0000ff"> </span><span style="color:#ff0000">name</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">objects</span>&quot;<span style="color:#0000ff"> </span><span style="color:#ff0000">type</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">Spring.Context.Support.DefaultSectionHandler, Spring.Core</span>&quot;<span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;/</span><span style="color:#a31515">sectionGroup</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;/</span><span style="color:#a31515">configSections</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;</span><span style="color:#a31515">spring</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;</span><span style="color:#a31515">context</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;</span><span style="color:#a31515">resource</span><span style="color:#0000ff"> </span><span style="color:#ff0000">uri</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">config://spring/objects</span>&quot;<span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;/</span><span style="color:#a31515">context</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;</span><span style="color:#a31515">objects</span><span style="color:#0000ff"> </span><span style="color:#ff0000">xmlns</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">http://www.springframework.net</span>&quot;<span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">        &lt;</span><span style="color:#a31515">object</span><span style="color:#0000ff"> </span><span style="color:#ff0000">id</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">pammetier</span>&quot;<span style="color:#0000ff"> </span><span style="color:#ff0000">type</span><span style="color:#0000ff">=</span>&quot;<span style="color:#0000ff">pam_v6.WsPam.Service1SoapClient,pam-v6-client-webservice</span>&quot;<span style="color:#0000ff">/&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;/</span><span style="color:#a31515">objects</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">&lt;/</span><span style="color:#a31515">spring</span><span style="color:#0000ff">&gt;</span></span></span>
+</code></pre></div>
+
+<p>Linha 16: A camada [business] é uma instância da classe [pam_v6.WsPam.Service1SoapClient], que se encontra na DLL [pam-v6-client-webservice]. Recorde-se que configurámos o projeto [pam-v6-client-webservice] para gerar esta DLL.</p>
+<p>Ainda existem alguns erros em [Default.aspx.cs]:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000015F0000011664342429.png" width="246" height="195" style="display:inline-block; margin:4px;width:6.5cm;height:5.149cm;" class="odt-zoomable" data-zoom-src="images/100000000000015F0000011664342429.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001430000007848216896.png" width="226" height="84" style="display:inline-block; margin:4px;width:5.98cm;height:2.223cm;" class="odt-zoomable" data-zoom-src="images/10000000000001430000007848216896.png" /></td></tr></table>
+
+<ul>
+  <li>linhas 5, 6: estes namespaces já não existem. As entidades encontram-se agora no namespace <i>pam_v6 </i>ou <i>pam_v6</i>.<i>WsPam</i>.
+  </li>
+  <li>linha 98: o cliente gerado [C] não herdou a classe [PamException] da camada [dao]. Não foi possível fazê-lo, uma vez que o serviço web não expõe esta exceção. Optamos por substituir <i>PamException </i>pela sua classe pai, <i>Exception</i>.
+  </li>
+</ul>
+
+<p>O código passa a ser:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span> System.Web.UI.WebControls;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span> pam_v6.WsPam;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">namespace</span> pam_v6</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">{</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#0000ff">public</span> <span style="color:#0000ff">partial</span> <span style="color:#0000ff">class</span> <span style="color:#2b91af">PagePam</span> : <span style="color:#2b91af">Page</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+</code></pre></div>
+
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-sql">
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      <span style="color:#0000ff">try</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        feuillesalaire = <span style="color:#2b91af">Global</span>.PamMetier.GetSalaire(DropDownListEmployes.SelectedValue, HeuresTravaillées, JoursTravaillés);</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      <span style="color:#0000ff">catch</span> (<span style="color:#2b91af">Exception</span> ex)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+</code></pre></div>
+
+<p>Depois de corrigidos estes erros, podemos executar a aplicação web:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000344000001A19DCA68A7.png" width="418" height="209" style="display:inline-block; margin:4px;width:11.06cm;height:5.517cm;" class="odt-zoomable" data-zoom-src="images/1000000000000344000001A19DCA68A7.png" /></td></tr></table>
+
+<ul>
+  <li>em [1], a URL do cliente web para o serviço web remoto
+  </li>
+  <li>em [2], a lista suspensa de funcionários foi preenchida. Os dados que contém provêm do serviço web.
+  </li>
+</ul>
+
+<p>Convidamos o leitor a testar esta versão 6, uma cópia da versão 4.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Este curso-tutorial escrito por <strong>Serge Tahé</strong> é disponibilizado ao público de acordo com os termos da
+        <em>Licença Creative Commons Atribuição – Sem uso comercial –
+        Partilha nas mesmas condições 3.0 não adaptada</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
